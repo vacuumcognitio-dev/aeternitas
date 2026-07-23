@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aeternitas — Entrada</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">A</span>Aeternitas</a>
+    <nav aria-label="Navegação principal"><a href="sobre.html">Sobre</a><a href="atualizacoes.html">Atualizações</a></nav>
+  </header>
+  <main class="hero">
+    <section class="hero-copy">
+      <p class="eyebrow">ACESSO EXPERIMENTAL • BETA TEST</p>
+      <h1>Bem-Vindo(a) ao <em>Aeternitas!</em></h1>
+      <p class="lead">Um espaço de descoberta para quem enxerga além do óbvio. Entre para acessar o conteúdo experimental do projeto.</p>
+      <div class="sun-orbit" aria-hidden="true"><span>✦</span></div>
+    </section>
+    <section class="login-card" aria-labelledby="login-title">
+      <div class="card-icon">⌁</div>
+      <h2 id="login-title">Acesse sua conta</h2>
+      <p>O acesso é restrito aos participantes do teste.</p>
+      <form id="login-form" novalidate>
+        <label for="username">Usuário</label>
+        <input id="username" name="username" autocomplete="username" required>
+        <label for="password">Senha</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <p class="form-message" id="form-message" role="alert"></p>
+        <button class="button" type="submit">Entrar <span>→</span></button>
+      </form>
+      <small>Não há cadastro aberto durante o beta.</small>
+    </section>
+  </main>
+  <footer>© <span data-year></span> Aeternitas · Ambiente experimental</footer>
+  <script src="js/app.js"></script>
+</body>
+</html>
