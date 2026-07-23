@@ -58,9 +58,23 @@ function json(response, status, payload) {
   response.end(JSON.stringify(payload));
 }
 function sendFile(response, file) {
-  fs.readFile(path.join(ROOT, file), (error, data) => {
-    if (error) return json(response, 404, { error: 'Arquivo não encontrado.' });
-    response.writeHead(200, { 'Content-Type': contentTypes[path.extname(file)] || 'application/octet-stream' });
+  const fullPath = path.join(ROOT, file);
+
+  console.log("Tentando abrir:", fullPath);
+
+  fs.readFile(fullPath, (error, data) => {
+    if (error) {
+      console.error(error);
+      return json(response, 404, {
+        error: "Arquivo não encontrado.",
+        path: fullPath
+      });
+    }
+
+    response.writeHead(200, {
+      "Content-Type": contentTypes[path.extname(file)] || "application/octet-stream"
+    });
+
     response.end(data);
   });
 }
@@ -84,6 +98,7 @@ const server = http.createServer((request, response) => {
   securityHeaders(response);
   const url = new URL(request.url, 'http://' + (request.headers.host || 'localhost'));
   const pathname = url.pathname;
+  console.log("Requisição recebida:", pathname);
 
   if (request.method === 'GET' && pathname === '/api/session') return json(response, 200, { authenticated: activeSession(request) });
   if (request.method === 'POST' && pathname === '/api/logout') {
